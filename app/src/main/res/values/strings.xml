@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Photo to video</string>
+    <string name="app_name">Photo2Video</string>
     <string name="images_folder">Photo Motion</string>
     <string name="NO">No</string>
     <string name="Photo">Gallery</string>
@@ -60,17 +60,17 @@
     <string name="ad_mob_banner_id">ca-app-pub-1075771178000414/1358612848</string>
     <string name="ad_mob_interstitial_id">ca-app-pub-1075771178000414/7812340554</string>
     <string name="ad_mob_app_id">ca-app-pub-1075771178000414~4321432508</string>
-    <string name="ad_mob_app_open_id">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="ad_mob_app_open_id">ca-app-pub-1075771178000414/4470897310</string>
 
     <!--Live-->
     <string name="ad_mob_native_id_live">ca-app-pub-1075771178000414/5997476257</string>
     <string name="ad_mob_banner_id_live">ca-app-pub-1075771178000414/1358612848</string>
     <string name="ad_mob_interstitial_id_live">ca-app-pub-1075771178000414/7812340554</string>
     <string name="ad_mob_app_id_live">ca-app-pub-1075771178000414~4321432508</string>
-    <string name="ad_mob_app_open_id_live">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="ad_mob_app_open_id_live">ca-app-pub-1075771178000414/4470897310</string>
     <string name="app_folder3">Temp</string>
     <string name="txt_camera">Camera</string>
-    <string name="txt_gallery">Gallery</string>
+    <string name="txt_gallery">Photo to Video</string>
     <string name="default_notification_channel_id">1000</string>
     <string name="please_try_again">Please try again</string>
     <string name="msg_professional_cancel">Continue with free version</string>

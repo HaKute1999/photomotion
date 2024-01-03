@@ -492,6 +492,11 @@
                         android:src="@drawable/ic_menu_play"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true" />
+                    <TextView
+                        android:id="@+id/txMovimento111"
+                        android:text="Preview"
+                        co
+                       ></TextView>
 
                 </LinearLayout>
 

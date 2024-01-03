@@ -38,6 +38,7 @@ import com.codeshare.photomotion.ApplicationClass;
 import com.codeshare.photomotion.R;
 import com.codeshare.photomotion.liewall.LiveWallActivity;
 import com.codeshare.photomotion.photoAlbum.MyAlbumActivity;
+import com.codeshare.photomotion.utils.AppHelper;
 import com.codeshare.photomotion.utils.Share;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -229,8 +230,8 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
             @Override
             public void run() {
                 try {
-                    Log.e("Download ", verifyLoginAndGetData());
-                    reponse = verifyLoginAndGetData();
+                    Log.e("Download ", AppHelper.verifyLoginAndGetData());
+                    reponse = AppHelper.verifyLoginAndGetData();
                 } catch (IOException e) {
                     Log.e("Exception ", "" + e.getMessage());
                 }
@@ -540,7 +541,7 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
                 if (!ApplicationClass.checkForStoragePermission(this))
                     Toast.makeText(this, R.string.storage_permission_not_granted, Toast.LENGTH_SHORT).show();
                 else {
-                    requestMyCreation();
+//                    requestMyCreation();
                 }
                 return;
             }
@@ -600,40 +601,5 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 
-    public static String verifyLoginAndGetData() throws IOException {
-        URL urlGetRequest = new URL("https://api.timkhap.com/livewallpaper/");
-        // HTTP Connexion
-        HttpURLConnection apiConnexion = (HttpURLConnection) urlGetRequest.openConnection();
-        // Method
-        apiConnexion.setRequestMethod("GET");
 
-        try {
-            // Response code
-            int responseCode = apiConnexion.getResponseCode();
-
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Read the response
-                BufferedReader in = new BufferedReader(new InputStreamReader(apiConnexion.getInputStream()));
-                StringBuffer response = new StringBuffer();
-                String inputLine = null;
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-                Log.e("ConnnectReeeee", response.toString());
-
-                // Return response
-                return response.toString();
-
-            } else {
-                return "false";
-            }
-
-        } finally {
-            Log.e("Disconnection", "e.toString()");
-            apiConnexion.disconnect();
-        }
-
-    }
 }

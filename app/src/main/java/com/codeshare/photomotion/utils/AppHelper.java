@@ -9,11 +9,15 @@ import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AppHelper {
 
@@ -94,6 +98,42 @@ public class AppHelper {
         } else {
             return true;
         }
+    }
+    public static String verifyLoginAndGetData() throws IOException {
+        URL urlGetRequest = new URL("https://api.timkhap.com/livewallpaper/");
+        // HTTP Connexion
+        HttpURLConnection apiConnexion = (HttpURLConnection) urlGetRequest.openConnection();
+        // Method
+        apiConnexion.setRequestMethod("GET");
+
+        try {
+            // Response code
+            int responseCode = apiConnexion.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Read the response
+                BufferedReader in = new BufferedReader(new InputStreamReader(apiConnexion.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine = null;
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                Log.e("ConnnectReeeee", response.toString());
+
+                // Return response
+                return response.toString();
+
+            } else {
+                return "false";
+            }
+
+        } finally {
+            Log.e("Disconnection", "e.toString()");
+            apiConnexion.disconnect();
+        }
+
     }
 
 

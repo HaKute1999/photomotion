@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="black_33">#3E000000</color>
-    <color name="colorAccent">#8D4CEF</color>
+    <color name="colorAccent">#32a873</color>
     <color name="colorAzulPadrao">#ff55a5da</color>
     <color name="colorAzulPadraoClaro">#ff55c8da</color>
     <color name="colorIconButtons">#ffa9abae</color>
@@ -10,9 +10,9 @@
     <color name="colorMenuDisabled">#88ffffff</color>
     <color name="colorPlanoDeFundo">#ffffffff</color>
     <color name="colorPlanoDeFundoTransparente">#aaeeeeee</color>
-    <color name="colorPrimary">#8D4CEF</color>
+    <color name="colorPrimary">#32a873</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorPrimary_trans">#bf8D4CEF</color>
+    <color name="colorPrimary_trans">#32a873</color>
     <color name="colorTextButtons">#ff727376</color>
     <color name="corTextoCinza">#ff888888</color>
     <color name="divider">#333333</color>

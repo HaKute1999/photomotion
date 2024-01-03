@@ -96,8 +96,22 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
         lin_set_as_wallpaper.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+                try {
+                    wallpaperManager.clear();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 Intent intentVideo = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-                SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
+                if (outputPath.contains("http")){
+                    SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
+
+                }else {
+                    SharedPref.getInstance().setString("live_wall_path", outputPath);
+
+                }
+
                 intentVideo.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT, new ComponentName(VideoPreviewActivity.this, VideoWallpaperService.class));
                 startActivity(intentVideo);
 
@@ -130,6 +144,8 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
                 fos.write(buffer);
                 fos.flush();
                 fos.close();
+                progressBar.setVisibility(View.GONE);
+                lin_set_as_wallpaper.setEnabled(true);
 
             } catch(FileNotFoundException e) {
                 return; // swallow a 404
@@ -170,6 +186,9 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
             @Override
             public void run() {
                 try {
+                    progressBar.setVisibility(View.VISIBLE);
+                    lin_set_as_wallpaper.setEnabled(false);
+
                     downloadFile(outputPath);
 
                     // Your code goes here
@@ -221,22 +240,33 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
         sb.append("playVideo: 22 ");
         sb.append(outputPath);
         Log.i("AAAAA", sb.toString());
+        if (outputPath.contains("http")){
+            videoView.setVideoPath(outputPath);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            Uri videoUri = FileProvider.getUriForFile(VideoPreviewActivity.this, getPackageName() + ".provider", new File(outputPath));
-//            videoView.setVideoURI(videoUri);
-        } else {
-//            videoView.setVideoURI(Uri.parse(outputPath));
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Uri videoUri = FileProvider.getUriForFile(VideoPreviewActivity.this, getPackageName() + ".provider", new File(outputPath));
+                videoView.setVideoURI(videoUri);
+            } else {
+                videoView.setVideoURI(Uri.parse(outputPath));
+            }
         }
-        videoView.setVideoPath(outputPath);
+
 
         videoView.setOnPreparedListener(new OnPreparedListener() {
             public void onPrepared(MediaPlayer mediaPlayer) {
+//                progressBar.setVisibility(View.VISIBLE);
+                lin_set_as_wallpaper.setEnabled(true);
+
+                progressBar.setVisibility(View.GONE);
+
                 videoView.start();
             }
         });
         videoView.setOnCompletionListener(new OnCompletionListener() {
             public void onCompletion(MediaPlayer mediaPlayer) {
+                lin_set_as_wallpaper.setEnabled(true);
+                progressBar.setVisibility(View.GONE);
                 videoView.start();
             }
         });
@@ -284,7 +314,7 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
                     ConfirmationDialog();
                     break;
                 case R.id.imgFacebook:
-                    ShareHelper.share(mActivity, outputPath, ShareHelper.FACEBOOK, false);
+//                    ShareHelper.share(mActivity, outputPath, ShareHelper.FACEBOOK, false);
                     break;
                 case R.id.iv_fav:
                     if (!fvHelper.isPathExists(outputPath)) {

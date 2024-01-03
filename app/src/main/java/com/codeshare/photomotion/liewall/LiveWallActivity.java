@@ -30,10 +30,12 @@ import com.codeshare.photomotion.model.LiveWall;
 import com.codeshare.photomotion.photoAlbum.AlbumAdapter.ClickListener;
 import com.codeshare.photomotion.photoAlbum.AlbumHelper;
 import com.codeshare.photomotion.photoAlbum.VideoPreviewActivity;
+import com.codeshare.photomotion.utils.AppHelper;
 import com.codeshare.photomotion.utils.GridSpacingItemDecoration;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,18 +63,16 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
         super.onCreate(bundle);
         getWindow().setFlags(1024, 1024);
         setContentView(R.layout.activity_live_wall);
-        Intent intent = getIntent();
-        String response = intent.getStringExtra("api");
-
-         allFiles = new ArrayList<>();
-        List<LiveWall> liveWalls = new ArrayList<>();
-        if (response!= null){
-            Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
-
-            allFiles = gson.fromJson(response, listType);
-            liveWalls = gson.fromJson(response, listType);
-        }
+//        Intent intent = getIntent();
+//        String response = intent.getStringExtra("api");
+//
+//         allFiles = new ArrayList<>();
+//        if (response!= null){
+//            Gson gson = new Gson();
+//            Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
+//
+//            allFiles = gson.fromJson(response, listType);
+//        }
     }
 
     public void initViews() {
@@ -182,6 +182,9 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
     }
 
     public void onResume() {
+        new LoadFileTask().execute(new Void[0]);
+
+
         super.onResume();
     }
 
@@ -278,6 +281,7 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+
     public class LoadFileTask extends AsyncTask<Void, Void, Void> {
         public void onPreExecute() {
             super.onPreExecute();
@@ -288,12 +292,29 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
             LiveWallActivity LiveWallActivity = LiveWallActivity.this;
             Intent intent = getIntent();
             String response = intent.getStringExtra("api");
-
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
             if (response!= null){
-                Gson gson = new Gson();
-                Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
+
 
                 LiveWallActivity.allFiles = gson.fromJson(response, listType);
+            }else {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+
+                            Log.e("Download ", AppHelper.verifyLoginAndGetData());
+
+                            LiveWallActivity.allFiles = gson.fromJson(AppHelper.verifyLoginAndGetData(), listType);
+
+                        } catch (IOException e) {
+                            Log.e("Exception ", "" + e.getMessage());
+                        }
+
+
+                    }
+                }).start();
             }
 //            LiveWallActivity.allFiles = AlbumHelper.loadFiles(LiveWallActivity.mContext);
             LiveWallActivity LiveWallActivity2 = LiveWallActivity.this;

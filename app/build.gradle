@@ -4,11 +4,11 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.codeshare.photomotion"
+        applicationId "com.expert.photo2video"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 4
-        versionName "1.3"
+        versionCode 1
+        versionName "1.0"
     }
     buildTypes {
        release {

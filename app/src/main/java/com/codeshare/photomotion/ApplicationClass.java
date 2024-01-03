@@ -30,7 +30,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.firebase.FirebaseApp;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -111,7 +110,6 @@ public class ApplicationClass extends Application {
     public void onCreate() {
         super.onCreate();
         setApplication(this);
-        FirebaseApp.initializeApp(this);
 
         RequestConfiguration requestConfiguration
                 = new RequestConfiguration.Builder()
