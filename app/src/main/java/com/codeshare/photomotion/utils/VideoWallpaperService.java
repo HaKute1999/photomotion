@@ -1,6 +1,8 @@
 package com.codeshare.photomotion.utils;
 
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -67,6 +69,15 @@ public class VideoWallpaperService extends WallpaperService {
                         videoUri = Uri.parse(path);
                     }
                     mp = MediaPlayer.create(getApplicationContext(), videoUri);
+//                    mp = new MediaPlayer();
+//                    mp.setDataSource(path);
+//                    mp.setAudioAttributes(
+//                            new AudioAttributes
+//                                    .Builder()
+//                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+//                                    .build());
+//                    mp.prepare();
+
                     mp.setDisplay(new VideoSurfaceHolder(holder));
                     mp.setLooping(true);
                     mp.setVolume(0, 0);

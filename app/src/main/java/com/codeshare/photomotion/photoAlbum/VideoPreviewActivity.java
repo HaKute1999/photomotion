@@ -14,6 +14,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +37,14 @@ import com.codeshare.photomotion.utils.VideoWallpaperService;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 
 
 public class VideoPreviewActivity extends BaseActivity implements OnClickListener {
@@ -89,9 +97,10 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
             @Override
             public void onClick(View view) {
                 Intent intentVideo = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-                SharedPref.getInstance().setString("live_wall_path", outputPath);
+                SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
                 intentVideo.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT, new ComponentName(VideoPreviewActivity.this, VideoWallpaperService.class));
                 startActivity(intentVideo);
+
             }
         });
 
@@ -101,6 +110,34 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
             ApplicationClass.deleteTemp();
         }
     }
+        private  void downloadFile(String url) {
+            try {
+//                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//
+//                StrictMode.setThreadPolicy(policy);
+                URL u = new URL(url);
+
+                URLConnection conn = u.openConnection();
+                int contentLength = conn.getContentLength();
+
+                DataInputStream stream = new DataInputStream(u.openStream());
+
+                byte[] buffer = new byte[contentLength];
+                stream.readFully(buffer);
+                stream.close();
+
+                DataOutputStream fos = new DataOutputStream(new FileOutputStream(new File(getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4")));
+                fos.write(buffer);
+                fos.flush();
+                fos.close();
+
+            } catch(FileNotFoundException e) {
+                return; // swallow a 404
+            } catch (IOException e) {
+                return; // swallow a 404
+            }
+        }
+
 
     private void displayFocusView() {
         if (SharedPref.getInstance(VideoPreviewActivity.this).getBoolean("isDisplayTargetView", false)) {
@@ -128,6 +165,21 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
 
     public void initData() {
         outputPath = getIntent().getStringExtra("video_path");
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    downloadFile(outputPath);
+
+                    // Your code goes here
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
         isFav = getIntent().getIntExtra("isfav", 0);
         fvHelper = new FavouriteHelper(mContext);
         ivfav.setSelected(fvHelper.isPathExists(outputPath));

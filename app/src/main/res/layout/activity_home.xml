@@ -54,7 +54,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_camera_home" />
+                    android:src="@drawable/camera" />
 
                 <TextView
                     style="@style/MainText"
@@ -76,7 +76,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_gallery_home" />
+                    android:src="@drawable/gallery" />
 
                 <TextView
                     style="@style/MainText"
@@ -94,7 +94,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_gallery_home" />
+                    android:src="@drawable/live_wallpaper" />
 
                 <TextView
                     style="@style/MainText"
@@ -125,7 +125,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_my_creation_home" />
+                    android:src="@drawable/mycreation" />
 
                 <TextView
                     style="@style/MainText"
@@ -148,7 +148,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_share_home" />
+                    android:src="@drawable/share" />
 
                 <TextView
                     style="@style/MainText"
@@ -167,7 +167,7 @@
 
                 <ImageView
                     style="@style/MainImage"
-                    android:src="@drawable/ic_rate_us_home" />
+                    android:src="@drawable/rate" />
 
                 <TextView
                     style="@style/MainText"
