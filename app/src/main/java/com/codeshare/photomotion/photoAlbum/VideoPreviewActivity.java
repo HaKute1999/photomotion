@@ -14,6 +14,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -95,7 +96,10 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
         lin_set_as_wallpaper.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                downloadFile(outputPath);
+                Intent intentVideo = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
+                SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
+                intentVideo.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT, new ComponentName(VideoPreviewActivity.this, VideoWallpaperService.class));
+                startActivity(intentVideo);
 
             }
         });
@@ -108,7 +112,11 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
     }
         private  void downloadFile(String url) {
             try {
+//                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//
+//                StrictMode.setThreadPolicy(policy);
                 URL u = new URL(url);
+
                 URLConnection conn = u.openConnection();
                 int contentLength = conn.getContentLength();
 
@@ -122,10 +130,7 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
                 fos.write(buffer);
                 fos.flush();
                 fos.close();
-                Intent intentVideo = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-                SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
-                intentVideo.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT, new ComponentName(VideoPreviewActivity.this, VideoWallpaperService.class));
-                startActivity(intentVideo);
+
             } catch(FileNotFoundException e) {
                 return; // swallow a 404
             } catch (IOException e) {
@@ -160,6 +165,21 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
 
     public void initData() {
         outputPath = getIntent().getStringExtra("video_path");
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    downloadFile(outputPath);
+
+                    // Your code goes here
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
         isFav = getIntent().getIntExtra("isfav", 0);
         fvHelper = new FavouriteHelper(mContext);
         ivfav.setSelected(fvHelper.isPathExists(outputPath));
