@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.activity.BaseActivity;
 import com.codeshare.photomotion.activity.MainActivity;
 import com.codeshare.photomotion.photoAlbum.AlbumAdapter.ClickListener;

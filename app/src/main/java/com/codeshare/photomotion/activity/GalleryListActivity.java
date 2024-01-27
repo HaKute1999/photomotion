@@ -17,12 +17,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.codeshare.photomotion.BuildConfig;
+import com.expert.photo2video.BuildConfig;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.fragment.PhotoFragment;
 import com.codeshare.photomotion.utils.Share;
 import com.codeshare.photomotion.utils.AppHelper;

@@ -135,39 +135,39 @@ public class ApplicationClass extends Application {
     public void loadFullScreenAdInsider() {
 
 
-        if (AppHelper.checkConnection(context)) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            String adUnitId = "";
-            if (BuildConfig.DEBUG)
-                adUnitId = getString(R.string.ad_mob_interstitial_id);
-            else {
-                adUnitId = getString(R.string.ad_mob_interstitial_id_live);
-            }
-            if (adUnitId == null) {
-                return;
-            }
-            Log.e("Ads ", "FullScreenAd adUnitId:  " + adUnitId);
-            if (TextUtils.isEmpty(adUnitId)) {
-                return;
-            }
-
-            InterstitialAd.load(context, adUnitId, adRequest, new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    // The mInterstitialAd reference will be null until
-                    // an ad is loaded.
-                    Log.e("Ads ", "FullScreenAd: onAdLoaded");
-                    mInterstitialAd = interstitialAd;
-                }
-
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    // Handle the error
-                    Log.e("Ads ", "FullScreenAd: onAdFailedToLoad: " + loadAdError.getMessage());
-                    mInterstitialAd = null;
-                }
-            });
-        }
+//        if (AppHelper.checkConnection(context)) {
+//            AdRequest adRequest = new AdRequest.Builder().build();
+//            String adUnitId = "";
+//            if (BuildConfig.DEBUG)
+//                adUnitId = getString(R.string.ad_mob_interstitial_id);
+//            else {
+//                adUnitId = getString(R.string.ad_mob_interstitial_id_live);
+//            }
+//            if (adUnitId == null) {
+//                return;
+//            }
+//            Log.e("Ads ", "FullScreenAd adUnitId:  " + adUnitId);
+//            if (TextUtils.isEmpty(adUnitId)) {
+//                return;
+//            }
+//
+//            InterstitialAd.load(context, adUnitId, adRequest, new InterstitialAdLoadCallback() {
+//                @Override
+//                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+//                    // The mInterstitialAd reference will be null until
+//                    // an ad is loaded.
+//                    Log.e("Ads ", "FullScreenAd: onAdLoaded");
+//                    mInterstitialAd = interstitialAd;
+//                }
+//
+//                @Override
+//                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                    // Handle the error
+//                    Log.e("Ads ", "FullScreenAd: onAdFailedToLoad: " + loadAdError.getMessage());
+//                    mInterstitialAd = null;
+//                }
+//            });
+//        }
     }
 
     public boolean isAdLoaded() {

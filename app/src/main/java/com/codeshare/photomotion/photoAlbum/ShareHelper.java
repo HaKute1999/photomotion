@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.core.app.ShareCompat.IntentBuilder;
 import androidx.core.content.FileProvider;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 
 import java.io.File;
 

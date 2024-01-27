@@ -27,7 +27,7 @@ import com.isseiaoki.simplecropview.CropImageView.RotateDegrees;
 import com.isseiaoki.simplecropview.callback.CropCallback;
 import com.isseiaoki.simplecropview.callback.LoadCallback;
 import com.isseiaoki.simplecropview.callback.SaveCallback;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.activity.CropActivity;
 import com.codeshare.photomotion.activity.AlbumListActivity;
 import com.codeshare.photomotion.utils.Share;

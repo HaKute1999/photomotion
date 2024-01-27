@@ -3,7 +3,7 @@ package com.codeshare.photomotion.customView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.utils.TransformInfo;
 import com.codeshare.photomotion.customView.ScaleGestureDetector.SimpleOnScaleGestureListener;
 

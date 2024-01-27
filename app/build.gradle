@@ -2,13 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 android {
+    namespace "com.expert.photo2video"
+    buildFeatures {
+        buildConfig = true
+    }
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.expert.photo2video"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 20240106
+        versionName "1.1"
     }
     buildTypes {
        release {
@@ -48,8 +52,8 @@ android {
         exclude 'META-INF/ASL2.0'
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
 

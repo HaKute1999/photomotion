@@ -16,6 +16,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
+import com.makeramen.roundedimageview.BuildConfig;
+import com.expert.photo2video.R;
 
 import static androidx.lifecycle.Lifecycle.Event.ON_START;
 

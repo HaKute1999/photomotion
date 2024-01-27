@@ -47,7 +47,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.codeshare.photomotion.ApplicationClass;
-import com.codeshare.photomotion.R;
 import com.codeshare.photomotion.callback.OnBitmapListCreated;
 import com.codeshare.photomotion.customView.CustomAnimationView;
 import com.codeshare.photomotion.customView.LupaImageView;
@@ -66,6 +65,7 @@ import com.codeshare.photomotion.model.EffectData;
 import com.codeshare.photomotion.model.StickerData;
 import com.codeshare.photomotion.utils.BitmapHelper;
 import com.codeshare.photomotion.utils.DatabaseHandler;
+import com.expert.photo2video.R;
 
 import java.io.InputStream;
 import java.util.ArrayList;

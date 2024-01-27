@@ -33,9 +33,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
-import com.codeshare.photomotion.BuildConfig;
+import com.expert.photo2video.BuildConfig;
 import com.codeshare.photomotion.ApplicationClass;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.liewall.LiveWallActivity;
 import com.codeshare.photomotion.photoAlbum.MyAlbumActivity;
 import com.codeshare.photomotion.utils.AppHelper;
@@ -219,7 +219,9 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_home);
+
         this.moActivity = this;
+
         initViews();
         loadNative();
         initViewListeners();
@@ -239,6 +241,8 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
 
             }
         }).start();
+//        throw new RuntimeException("Test Crash"); // Force a crash
+
     }
 
 

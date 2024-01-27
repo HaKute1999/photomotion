@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import com.airbnb.lottie.LottieAnimationView;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.customView.controllersapp.ToolsController;
 import com.codeshare.photomotion.utils.BitmapHelper;
 import com.codeshare.photomotion.callback.OnBitmapListCreated;

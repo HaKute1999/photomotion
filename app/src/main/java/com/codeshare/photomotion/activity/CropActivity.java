@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.fragment.MainFragment;
 import com.codeshare.photomotion.utils.Share;
 

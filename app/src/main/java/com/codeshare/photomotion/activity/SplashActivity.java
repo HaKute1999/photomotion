@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 
 public class SplashActivity extends BaseParentActivity {
 

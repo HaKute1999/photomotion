@@ -481,21 +481,26 @@
 
                 <LinearLayout
                     android:id="@+id/btPlayPause"
-                    style="@style/MainLinearlayout">
+                    style="@style/MainLinearlayout"
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/ibPlayPause"
                         android:background="@color/colorPrimary"
-                        android:padding="@dimen/_5sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:padding="@dimen/_1sdp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:src="@drawable/ic_menu_play"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true" />
                     <TextView
+                        android:textColor="@android:color/white"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/txMovimento111"
+                        android:textSize="@dimen/_9ssp"
                         android:text="Preview"
-                        co
                        ></TextView>
 
                 </LinearLayout>

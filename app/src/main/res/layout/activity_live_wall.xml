@@ -118,9 +118,9 @@
 
         <View style="@style/ad_divider" />
 
-        <FrameLayout
-            android:id="@+id/adView"
-            style="@style/ad_layout" />
+<!--        <FrameLayout-->
+<!--            android:id="@+id/adView"-->
+<!--            style="@style/ad_layout" />-->
     </RelativeLayout>
 
 </RelativeLayout>

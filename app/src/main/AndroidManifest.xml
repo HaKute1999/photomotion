@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.codeshare.photomotion">
+    package="com.expert.photo2video">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -20,6 +23,10 @@
     <uses-feature
         android:name="android.software.live_wallpaper"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
 
     <queries>
         <package android:name="com.whatsapp" />
@@ -34,7 +41,7 @@
     </queries>
 
     <application
-        android:name=".ApplicationClass"
+        android:name="com.codeshare.photomotion.ApplicationClass"
         android:allowBackup="true"
         android:extractNativeLibs="true"
         android:hardwareAccelerated="true"
@@ -48,22 +55,22 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
         <activity
-            android:name=".liewall.LiveWallActivity"
+            android:name="com.codeshare.photomotion.liewall.LiveWallActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CropActivity"
+            android:name="com.codeshare.photomotion.activity.CropActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.SavingActivity"
+            android:name="com.codeshare.photomotion.activity.SavingActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".activity.MotionEditActivity"
+            android:name="com.codeshare.photomotion.activity.MotionEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.codeshare.photomotion.activity.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -75,20 +82,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.codeshare.photomotion.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.GalleryListActivity"
+            android:name="com.codeshare.photomotion.activity.GalleryListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AlbumListActivity"
+            android:name="com.codeshare.photomotion.activity.AlbumListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".photoAlbum.MyAlbumActivity"
+            android:name="com.codeshare.photomotion.photoAlbum.MyAlbumActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".photoAlbum.VideoPreviewActivity"
+            android:name="com.codeshare.photomotion.photoAlbum.VideoPreviewActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -102,7 +109,7 @@
             android:value="@string/ad_mob_app_id" />
 
         <service
-            android:name=".utils.VideoWallpaperService"
+            android:name="com.codeshare.photomotion.utils.VideoWallpaperService"
             android:exported="true"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_WALLPAPER">
@@ -126,7 +133,7 @@
         </provider>
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name="com.codeshare.photomotion.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -45,8 +45,8 @@ import androidx.core.content.FileProvider;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.codeshare.photomotion.ApplicationClass;
-import com.codeshare.photomotion.BuildConfig;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.BuildConfig;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.activity.MotionEditActivity;
 
 import java.io.ByteArrayOutputStream;

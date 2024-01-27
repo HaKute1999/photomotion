@@ -25,9 +25,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.codeshare.photomotion.BuildConfig;
+import com.expert.photo2video.BuildConfig;
 import com.codeshare.photomotion.ApplicationClass;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.callback.OnProgressReceiver;
 import com.codeshare.photomotion.callback.onVideoSaveListener;
 import com.codeshare.photomotion.customView.beans.Projeto;

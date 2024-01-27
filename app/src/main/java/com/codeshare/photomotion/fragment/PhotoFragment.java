@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.model.PhoneAlbum;
 import com.codeshare.photomotion.model.PhonePhoto;
 import com.codeshare.photomotion.adapter.PhoneAlbumAdapter;

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.model.StickerData;
 import com.codeshare.photomotion.utils.OnSingleClickListener;
 import com.codeshare.photomotion.callback.OnStickerClickListner;

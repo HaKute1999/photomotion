@@ -3,6 +3,8 @@ package com.codeshare.photomotion.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LiveWall implements Serializable {
     @SerializedName("video_url")
@@ -11,6 +13,8 @@ public class LiveWall implements Serializable {
     String image_url;
     @SerializedName("title")
     String title;
+    @SerializedName("category")
+    List<CategoryItem> categoryItemList;
 
     public LiveWall(String video_url, String image_url) {
         this.video_url = video_url;

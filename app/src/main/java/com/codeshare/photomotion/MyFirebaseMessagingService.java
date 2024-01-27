@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.codeshare.photomotion.activity.SplashActivity;
+import com.expert.photo2video.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -57,21 +58,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, getRandomNumber() /* Request code */, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT, new Bundle());
+                PendingIntent.FLAG_IMMUTABLE| PendingIntent.FLAG_IMMUTABLE, new Bundle());
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Bitmap bm = BitmapFactory.decodeResource(ApplicationClass.getContext().getResources(), R.mipmap.ic_launcher);
+        Bitmap bm = BitmapFactory.decodeResource(ApplicationClass.getContext().getResources(), R.drawable.logo);
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         createChannel(notificationManager, getString(R.string.default_notification_channel_id), getString(R.string.app_name));
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.logo)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(remoteMessage.getNotification().getBody()))
                 .setContentTitle(remoteMessage.getNotification().getTitle())
                 .setLargeIcon(bm)
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).setVibrate(new long[]{
                         500, 500, 500, 500, 500
                 })

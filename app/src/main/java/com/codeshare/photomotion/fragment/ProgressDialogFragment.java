@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 
 public class ProgressDialogFragment extends DialogFragment {
     public static final String TAG = "ProgressDialogFrag";

@@ -27,7 +27,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codeshare.photomotion.R;
 import com.codeshare.photomotion.activity.MotionEditActivity;
 import com.codeshare.photomotion.callback.OnClickListner;
 import com.codeshare.photomotion.callback.OnStickerClickListner;
@@ -38,6 +37,7 @@ import com.codeshare.photomotion.model.EffectData;
 import com.codeshare.photomotion.model.StickerData;
 import com.codeshare.photomotion.adapter.EffectAdapter;
 import com.codeshare.photomotion.adapter.StickerAdapter;
+import com.expert.photo2video.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.NumberFormat;

@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.codeshare.photomotion.BuildConfig;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.BuildConfig;
+import com.expert.photo2video.R;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;

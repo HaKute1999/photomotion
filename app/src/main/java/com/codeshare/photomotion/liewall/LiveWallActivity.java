@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.activity.BaseActivity;
 import com.codeshare.photomotion.activity.MainActivity;
 import com.codeshare.photomotion.model.LiveWall;
@@ -33,7 +33,14 @@ import com.codeshare.photomotion.photoAlbum.VideoPreviewActivity;
 import com.codeshare.photomotion.utils.AppHelper;
 import com.codeshare.photomotion.utils.GridSpacingItemDecoration;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -90,8 +97,8 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
 //        tvFav.setSelected(false);
 //        tvAll.setTextColor(-1);
 //        tvFav.setTextColor(getResources().getColor(R.color.colorPrimary));
-        FrameLayout mAdView = findViewById(R.id.adView);
-        loadBannerAdsApp(mAdView);
+//        FrameLayout mAdView = findViewById(R.id.adView);
+//        loadBannerAdsApp(mAdView);
     }
 
     public void initData() {
@@ -293,11 +300,16 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
             Intent intent = getIntent();
             String response = intent.getStringExtra("api");
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
+//            Type listType = new TypeToken<ArrayList<LiveWall>>() {}.getType();
             if (response!= null){
 
 
-                LiveWallActivity.allFiles = gson.fromJson(response, listType);
+
+                try {
+                    LiveWallActivity.allFiles = getResponse(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }else {
                 new Thread(new Runnable() {
                     @Override
@@ -306,12 +318,14 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
 
                             Log.e("Download ", AppHelper.verifyLoginAndGetData());
 
-                            LiveWallActivity.allFiles = gson.fromJson(AppHelper.verifyLoginAndGetData(), listType);
+                            LiveWallActivity.allFiles =getResponse(AppHelper.verifyLoginAndGetData());
 
                         } catch (IOException e) {
                             Log.e("Exception ", "" + e.getMessage());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
+//
 
                     }
                 }).start();
@@ -343,5 +357,30 @@ public class LiveWallActivity extends BaseActivity implements OnClickListener {
             sb2.append(allFiles.size());
             Log.i(str, sb2.toString());
         }
+    }
+    private ArrayList<LiveWall> getResponse(String response) throws JSONException {
+        ArrayList<LiveWall> liveWalls = new ArrayList<>();
+        Gson goson = new Gson();
+        JSONObject jsonObject = new JSONObject(response);
+//        Type type = new TypeToken<List<LiveWall>>() {}.getType();
+//        JSONArray array = jsonObject.getJSONArray("videos");
+
+//        List<LiveWall> lista = goson.fromJson(String.valueOf(array), type);
+
+        JSONArray arr = jsonObject.getJSONArray("videos");
+        if (arr != null) {
+            for (int i=0;i<arr.length();i++){
+//                String t = arr.get(i).toString();
+//                LiveWall live = new Gson().fromJson(t, LiveWall.class);
+                liveWalls.add(new LiveWall(arr.getJSONObject(i).getString("video_url"), arr.getJSONObject(i).getString("image_url")));
+            }
+        }
+//        Type listType = new TypeToken<ArrayList<LiveWall>>(){}.getType();
+
+
+//        TypeToken<List<LiveWall>> token = new TypeToken<List<LiveWall>>(){};
+
+        return liveWalls;
+
     }
 }

@@ -68,6 +68,7 @@ public class VideoWallpaperService extends WallpaperService {
                     } else {
                         videoUri = Uri.parse(path);
                     }
+                    Log.d("ndchbdhcbdch", videoUri.getPath());
                     mp = MediaPlayer.create(getApplicationContext(), videoUri);
 //                    mp = new MediaPlayer();
 //                    mp.setDataSource(path);

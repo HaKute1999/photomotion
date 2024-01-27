@@ -1,176 +1,26 @@
 {
   "project_info": {
-    "project_number": "977196651484",
-    "project_id": "photolab-6d76e",
-    "storage_bucket": "photolab-6d76e.appspot.com"
+    "project_number": "542804464484",
+    "project_id": "photo2text-2f89d",
+    "storage_bucket": "photo2text-2f89d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:977196651484:android:def7c59bec1a89aa8e7519",
-        "android_client_info": {
-          "package_name": "com.codecanyon.weatherapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDtpNhnHUO_5rXx2w4J_wC9h8ytJzNMJK0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:977196651484:android:a1391ffcdab8c7cc8e7519",
+        "mobilesdk_app_id": "1:542804464484:android:c07304f1d6c8b742fde071",
         "android_client_info": {
           "package_name": "com.expert.photo2video"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDtpNhnHUO_5rXx2w4J_wC9h8ytJzNMJK0"
+          "current_key": "AIzaSyB_4_pYFBZugurV9jGvINJork0K1wCviUs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:977196651484:android:4dec33342dfed0488e7519",
-        "android_client_info": {
-          "package_name": "com.tools.photolab"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "977196651484-gnr4ab4qborq2a8hg28brggjg4a50s60.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.tools.photolab",
-            "certificate_hash": "6afb8513d9f9b9f72ca1562f27b8e21fc9e27bf8"
-          }
-        },
-        {
-          "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDtpNhnHUO_5rXx2w4J_wC9h8ytJzNMJK0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:977196651484:android:5209e88b9bbcb5568e7519",
-        "android_client_info": {
-          "package_name": "com.tools.photolabnew"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "977196651484-1oiaocs51n3hmmfmafoiakekc8gsofrv.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.tools.photolabnew",
-            "certificate_hash": "6afb8513d9f9b9f72ca1562f27b8e21fc9e27bf8"
-          }
-        },
-        {
-          "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDtpNhnHUO_5rXx2w4J_wC9h8ytJzNMJK0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:977196651484:android:b0ec3a6e1808f1698e7519",
-        "android_client_info": {
-          "package_name": "com.tools.sleepsounds"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "977196651484-pa1qbvj5kqcpmsd21btr6cmqpn4fk59d.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.tools.sleepsounds",
-            "certificate_hash": "6afb8513d9f9b9f72ca1562f27b8e21fc9e27bf8"
-          }
-        },
-        {
-          "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDtpNhnHUO_5rXx2w4J_wC9h8ytJzNMJK0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "977196651484-q92o6c9big2mbk7ncrkev0v33mhshk8j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

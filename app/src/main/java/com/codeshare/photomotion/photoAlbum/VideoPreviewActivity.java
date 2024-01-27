@@ -14,7 +14,6 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +29,7 @@ import androidx.core.content.FileProvider;
 
 import com.codeshare.photomotion.ApplicationClass;
 import com.bumptech.glide.Glide;
-import com.codeshare.photomotion.R;
+import com.expert.photo2video.R;
 import com.codeshare.photomotion.activity.BaseActivity;
 import com.codeshare.photomotion.utils.SharedPref;
 import com.codeshare.photomotion.utils.VideoWallpaperService;
@@ -65,6 +64,8 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
     private ImageView ivfav;
     private Activity mActivity;
     private long mLastClickTime = 0;
+    String patht = "";
+
 
     public Context getContext() {
         return this;
@@ -105,7 +106,7 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
 
                 Intent intentVideo = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
                 if (outputPath.contains("http")){
-                    SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4");
+                    SharedPref.getInstance().setString("live_wall_path", getExternalCacheDir().getAbsolutePath().toString()+ "/"+ patht);
 
                 }else {
                     SharedPref.getInstance().setString("live_wall_path", outputPath);
@@ -139,8 +140,7 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
                 byte[] buffer = new byte[contentLength];
                 stream.readFully(buffer);
                 stream.close();
-
-                DataOutputStream fos = new DataOutputStream(new FileOutputStream(new File(getExternalCacheDir().getAbsolutePath().toString()+"/video.mp4")));
+                DataOutputStream fos = new DataOutputStream(new FileOutputStream(new File(getExternalCacheDir().getAbsolutePath().toString()+ "/"+ patht)));
                 fos.write(buffer);
                 fos.flush();
                 fos.close();
@@ -181,6 +181,8 @@ public class VideoPreviewActivity extends BaseActivity implements OnClickListene
 
     public void initData() {
         outputPath = getIntent().getStringExtra("video_path");
+        String [] pth =  outputPath.split("/");
+        patht = pth[pth.length-1];
         Thread thread = new Thread(new Runnable() {
 
             @Override
