@@ -12,9 +12,12 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.codeshare.photomotion.activity.SplashActivity;
 import com.expert.photo2video.R;
@@ -48,17 +51,34 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(chan1);
         }
     }
-
+    private void scheduleJob() {
+        // [START dispatch_job]
+        OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(MyWorker.class)
+                .build();
+        WorkManager.getInstance(this).beginWith(work).enqueue();
+        // [END dispatch_job]
+    }
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+        if (remoteMessage.getData().size() > 0) {
+
+            if (/* Check if data needs to be processed by long running job */ true) {
+                // For long-running tasks (10 seconds or more) use WorkManager.
+                scheduleJob();
+            } else {
+                // Handle message within 10 seconds
+//                handleNow();
+            }
+
+        }
 
         Intent intent = new Intent(this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
+        Log.d("dcndcjncdjc","vfvmfmvfkjvf");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, getRandomNumber() /* Request code */, intent,
-                PendingIntent.FLAG_IMMUTABLE| PendingIntent.FLAG_IMMUTABLE, new Bundle());
+                PendingIntent.FLAG_IMMUTABLE| PendingIntent.FLAG_UPDATE_CURRENT, new Bundle());
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Bitmap bm = BitmapFactory.decodeResource(ApplicationClass.getContext().getResources(), R.drawable.logo);

@@ -215,11 +215,27 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
         }
         return true;
     }
+    final int PERMISSION_REQUEST_CODE =112;
 
+    public void getNotificationPermission(){
+        try {
+            if (Build.VERSION.SDK_INT > 32) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        PERMISSION_REQUEST_CODE);
+            }
+        }catch (Exception e){
+
+        }
+    }
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_home);
-
+        if (Build.VERSION.SDK_INT > 32) {
+            if (!shouldShowRequestPermissionRationale("112")){
+                getNotificationPermission();
+            }
+        }
         this.moActivity = this;
 
         initViews();
@@ -549,6 +565,16 @@ public class MainActivity extends BaseParentActivity implements OnClickListener 
                 }
                 return;
             }
+            case PERMISSION_REQUEST_CODE:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // allow
+
+                }  else {
+                    //deny
+                }
+                return;
         }
     }
 
